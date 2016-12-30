@@ -83,7 +83,7 @@ function yzk_createBatchWoffWebFontAsync(apikey, obj, path, callback) {
     var newObj = { ApiKey: apikey };
     for (var i = 0; i < obj.Datas.length; i++) {
         newObj["Datas[" + i + "][AccessKey]"] = obj.Datas[i].AccessKey;
-        newObj["Datas[" + i + "][Content]"] = obj.Datas[i].Content;
+        newObj["Datas[" + i + "][Content]"] = obj.Datas[i].Content.replace('&','');
         newObj["Datas[" + i + "][Url]"] = obj.Datas[i].Url;
     }
     yzk_requestCommon(path, newObj, callback);
@@ -97,7 +97,7 @@ function yzk_getBatchFontFace(apikey, obj, path, callback) {
     var newObj = { ApiKey: apikey };
     for (var i = 0; i < obj.Tags.length; i++) {
         newObj["Tags[" + i + "][AccessKey]"] = obj.Tags[i].AccessKey;
-        newObj["Tags[" + i + "][Content]"] = obj.Tags[i].Content;
+        newObj["Tags[" + i + "][Content]"] = obj.Tags[i].Content.replace('&','');
         newObj["Tags[" + i + "][Tag]"] = obj.Tags[i].Tag;
     }
     yzk_requestCommon(path, newObj, callback);
@@ -109,6 +109,7 @@ function yzk_getBatchFontFace(apikey, obj, path, callback) {
  */
 function yzk_getFontFace(apikey, obj, path, callback) {
     obj["ApiKey"] = apikey;
+      obj.Content=obj.Content.replace('&','');
     yzk_requestCommon(path, obj, callback);
 }
 
