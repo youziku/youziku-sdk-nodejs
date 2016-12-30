@@ -39,7 +39,7 @@ AccessKey:'xxxxxx',
 Content:'有字库，让中文跃上云端！'
 };
 
-youzikuClient.getFontFace(json, function (result) {
+youzikuClient.getFontFace(entity, function (result) {
     console.log(result.FontFamily);
     console.log(result.FontFace);
     console.log(result.Code);
@@ -56,7 +56,7 @@ AccessKey:'xxxxxx',
 Content:'有字库，让中文跃上云端！'
 };
 
-youzikuClient.getWoffBase64StringFontFace(json, function (result) {
+youzikuClient.getWoffBase64StringFontFace(entity, function (result) {
     console.log(result.FontFamily);
     console.log(result.FontFace);
     console.log(result.Code);
