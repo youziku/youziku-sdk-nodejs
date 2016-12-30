@@ -26,14 +26,14 @@ npm install youziku
 
 # 三、Sample
 ## 1.初始化YouzikuClient
-``` nodejs
+``` node
 var youziku =require("youziku");
 var youzikuClient = new youziku.youzikuClient("xxxxxx"); //apikey
 ```
 ## 2.单标签模式
 ### 2.1 GetFontface()
 #### 备注:直接返回所有格式的@fontface
-``` js
+``` node
 var entity={
 AccessKey:'xxxxxx',
 Content:'有字库，让中文跃上云端！'
@@ -50,7 +50,7 @@ youzikuClient.getFontFace(entity, function (result) {
 ```
 ### 2.2 GetWoffBase64StringFontFace()
 #### 备注：直接返回流（woff流）的@fontface
-``` js
+``` node
 var entity={
 AccessKey:'xxxxxx',
 Content:'有字库，让中文跃上云端！'
@@ -67,7 +67,7 @@ youzikuClient.getWoffBase64StringFontFace(entity, function (result) {
 ## 3.多标签生成模式
 ### 1.GetBatchFontFace()
 #### 备注：直接返回所有格式的@fontface;可传递多个标签和内容一次生成多个@fontface
-``` js
+``` node
 var data = {
     Tags: []
 };
@@ -91,7 +91,7 @@ youzikuClient.getBatchFontFace(data, function (result) {
 ```
 ### 2.GetBatchWoffFontFace ()
 #### 备注：直接返回仅woff格式的@fontface
-``` js
+``` node
 var woffdata = {
     Tags: []
 };
@@ -117,7 +117,7 @@ youzikuClient.getBatchWoffFontFace(woffdata, function (result) {
 ### 1.CreateBatchWoffWebFontAsync()
 #### 备注：自定义路径接口可以被程序异步调用，程序调用后可以直接向下执行，不需要等待返回值
 #### &emsp;&emsp;&emsp;当需要显示字体效果时，可以根据自己所定义的路径<a href="http://service.youziku.com/index.html#format" target="_blank" style="color: #ff7e00;">拼组出@font-face语句</a>，然后将语句输出到前端页面，即可使内容显示字体效果。
-``` js
+``` node
 var cdata = {
     Datas: []
 };
