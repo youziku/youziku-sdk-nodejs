@@ -20,13 +20,13 @@ SDK的返回值主要内容是@font-face语句，@font-face语句是CSS3中的�
 
 # 二、引用
 ## npm安装
-``` js
+``` npm
 npm install youziku
 ```
 
 # 三、Sample
 ## 1.初始化YouzikuClient
-``` js
+``` node
 var youziku =require("youziku");
 var youzikuClient = new youziku.youzikuClient("xxxxxx"); //apikey
 ```
