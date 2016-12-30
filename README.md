@@ -26,7 +26,7 @@ npm install youziku
 
 # 三、Sample
 ## 1.初始化YouzikuClient
-``` node
+``` nodejs
 var youziku =require("youziku");
 var youzikuClient = new youziku.youzikuClient("xxxxxx"); //apikey
 ```
