@@ -17,15 +17,14 @@ SDK的返回值主要内容是@font-face语句，@font-face语句是CSS3中的�
 用户可以将@font-face语句与内容相对应保存至数据库，以便在内容被加载时，该语句能跟随内容一起加载到前端页面，从而使内容显示字体效果；<br/>
 用户也可以不保存@font-face语句：有字库允许用户<a href="#user-content-4自定义路径生成模式">自定义字体存放路径</a>，当需要显示字体效果时，可以根据自己所定义的路径<a href="http://service.youziku.com/index.html#format" target="_blank" style="color: #ff7e00;">拼组出@font-face语句</a>，然后将语句输出到前端页面，即可使内容显示字体效果。
 
-# 二、下载
-<a href="https://github.com/youziku/youziku-sdk-nodejs/raw/master/youziku.zip">SDK</a><br />
 
-# 三、引用
+# 二、引用
+## npm安装
 ``` js
 npm install youziku
 ```
 
-# 四、Sample
+# 三、Sample
 ## 1.初始化YouzikuClient
 ``` js
 var youziku =require("youziku");
