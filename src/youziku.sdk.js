@@ -15,15 +15,16 @@ var request = require('request');
  * @description youzikuClient
  * @author jamesbing
  */
-function youzikuClient(apiKey) {
+function youzikuClient(apiKey,host) {
 
     var client = {
         ApiKey: apiKey,
+        Host:"http://service.youziku.com",
         /**
          * Single Tag
          */
         getFontFace: function (jsonObj, callback) {
-            yzk_getFontFace(this.ApiKey, jsonObj, '/webFont/getFontFace', function (data) {
+            yzk_getFontFace(this.ApiKey, jsonObj, this.Host+'/webFont/getFontFace', function (data) {
                 if (callback) {
                     callback(JSON.parse(data));
                 }
@@ -33,7 +34,7 @@ function youzikuClient(apiKey) {
          * Single Tag [Base64String]
          */
         getWoffBase64StringFontFace: function (jsonObj, callback) {
-            yzk_getFontFace(this.ApiKey, jsonObj, '/webFont/getWoffBase64StringFontFace', function (data) {
+            yzk_getFontFace(this.ApiKey, jsonObj, this.Host+'/webFont/getWoffBase64StringFontFace', function (data) {
                 if (callback) {
                     callback(JSON.parse(data));
                 }
@@ -43,7 +44,7 @@ function youzikuClient(apiKey) {
         * Batch All Tags
         */
         getBatchFontFace: function (jsonObj, callback) {
-            yzk_getBatchFontFace(this.ApiKey, jsonObj, '/batchWebFont/getBatchFontFace', function (data) {
+            yzk_getBatchFontFace(this.ApiKey, jsonObj, this.Host+'/batchWebFont/getBatchFontFace', function (data) {
                 if (callback) {
                     callback(JSON.parse(data));
                 }
@@ -53,7 +54,7 @@ function youzikuClient(apiKey) {
         * Batch Woff Tags
         */
         getBatchWoffFontFace: function (jsonObj, callback) {
-            yzk_getBatchFontFace(this.ApiKey, jsonObj, '/batchWebFont/getBatchWoffFontFace', function (data) {
+            yzk_getBatchFontFace(this.ApiKey, jsonObj, this.Host+'/batchWebFont/getBatchWoffFontFace', function (data) {
                 if (callback) {
                     callback(JSON.parse(data));
                 }
@@ -63,7 +64,7 @@ function youzikuClient(apiKey) {
          * Batch CustomPath
          */
         createBatchWoffWebFontAsync: function (jsonObj, callback) {
-            yzk_createBatchWoffWebFontAsync(this.ApiKey, jsonObj, '/batchCustomWebFont/createBatchWoffWebFontAsync', function (data) {
+            yzk_createBatchWoffWebFontAsync(this.ApiKey, jsonObj, this.Host+'/batchCustomWebFont/createBatchWoffWebFontAsync', function (data) {
 
                 if (callback) {
                     callback(JSON.parse(data));
@@ -71,6 +72,10 @@ function youzikuClient(apiKey) {
             })
         }
     };
+ 
+    if(host){
+        client.Host=host;
+    }
     return client;
 };
 
@@ -119,8 +124,8 @@ function yzk_getFontFace(apikey, obj, path, callback) {
  */
 function yzk_requestCommon(path, obj, callback) {
 
-    var host = "http://service.youziku.com";
-    var rq = request.post({ url: host + path, form: obj }, function (error, response, datas) {
+
+    var rq = request.post({ url:path, form: obj }, function (error, response, datas) {
         if (callback) {
             callback(datas);
         }
