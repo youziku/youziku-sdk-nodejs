@@ -135,8 +135,4 @@ function yzk_requestCommon(path, obj, callback) {
         console.log(err);
     })
 
-    // rq.removeHeader("host");
-    //rq.setHeader("Host", "service.youziku.com");
-    //rq.setHeader("Connection", "keep-alive");
-
 }
