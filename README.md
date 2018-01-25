@@ -4,7 +4,7 @@
 SDK适用于在Nodejs中调用<a  target="_blank"  href="http://service.youziku.com">service.youziku.com</a>中的所有api<br/>
 
 ## 2.工作流程<br/>　　
-   ①用户用后端程序调用SDK，提交动态内容到有字库的子集化(裁切)服务器<br/>
+   ①用户用后端程序调用SDK，提交动态内容到有字库的子集化(裁切)服务器<br/>
    ②服务器接收到所提交内容后，根据内容裁剪出对应的小字体文件，并转换为4种通用字体格式（woff、eot、ttf、svg）<br/>
    ③服务器将所有字体文件按用户指定的地址上传至阿里云CDN<br/>
    ④用户使用字体时，用自定义的路径，参照@font-face格式来拼出能兼容所有浏览器的@font-face语句<br/>
