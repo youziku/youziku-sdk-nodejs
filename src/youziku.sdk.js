@@ -25,34 +25,41 @@ function youzikuClient(apiKey, host) {
         ApiKey: apiKey,
         Host: "http://service.youziku.com",
         /**
-         * Single Tag
+         * Single (全格式)
          */
         getFontFace: function (jsonObj, callback) {
             yzk_getFontFace(this.ApiKey, jsonObj, this.Host + '/webFont/getFontFace', callback);
         },
         /**
-         * Single Tag [Base64String]
+         * Single Tag (Base64String)
          */
         getWoffBase64StringFontFace: function (jsonObj, callback) {
             yzk_getFontFace(this.ApiKey, jsonObj, this.Host + '/webFont/getWoffBase64StringFontFace', callback);
         },
         /**
-        * Batch All Tags
+        * Batch (全格式)
         */
         getBatchFontFace: function (jsonObj, callback) {
             yzk_getBatchFontFace(this.ApiKey, jsonObj, this.Host + '/batchWebFont/getBatchFontFace', callback);
         },
         /**
-        * Batch Woff Tags
+        * Batch (Woff格式)
         */
         getBatchWoffFontFace: function (jsonObj, callback) {
             yzk_getBatchFontFace(this.ApiKey, jsonObj, this.Host + '/batchWebFont/getBatchWoffFontFace', callback);
         },
         /**
-         * Batch CustomPath
+         * CustomPath (Woff格式)
          */
         createBatchWoffWebFontAsync: function (jsonObj, callback) {
-            yzk_createBatchWoffWebFontAsync(this.ApiKey, jsonObj, this.Host + '/batchCustomWebFont/createBatchWoffWebFontAsync', callback);
+            yzk_getCustomPathBatchWebFont(this.ApiKey, jsonObj, this.Host + '/batchCustomWebFont/createBatchWoffWebFontAsync', callback);
+        },
+
+        /**
+         * CustomPath (全格式)
+         */
+        createBatchWebFontAsync: function (jsonObj, callback) {
+            yzk_getCustomPathBatchWebFont(this.ApiKey, jsonObj, this.Host + '/batchCustomWebFont/CreateBatchWebFontAsync', callback);
         }
     };
 
@@ -67,7 +74,7 @@ function youzikuClient(apiKey, host) {
 *@description Custom path interface method
 *@author jamesbing 
 */
-function yzk_createBatchWoffWebFontAsync(apikey, obj, path, callback) {
+function yzk_getCustomPathBatchWebFont(apikey, obj, path, callback) {
     var newObj = { ApiKey: apikey };
     newObj["Datas"] = obj.Datas;
     yzk_requestCommon(path, newObj, function (datas) {
@@ -127,6 +134,7 @@ function yzk_privateReplaceFontfamily(data, newFontfamily) {
 function yzk_requestCommon(path, obj, callback) {
 
     var rq = axios.post(path, obj).then(function (res) {
+
         if (callback) {
             callback(res.data);
         }
