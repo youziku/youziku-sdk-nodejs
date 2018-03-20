@@ -96,28 +96,29 @@ function youzikuClient(apiKey, host) {
         this.getFontface = function (jsonObj, apiKey, url) {
 
             return new Promise(function (resolve, reject) {
-                try {
-                    youzikuConfig.CoreModule.getFontFace(apiKey, jsonObj, url, function (result) {
+
+                youzikuConfig.CoreModule.getFontFace(apiKey, jsonObj, url, function (result) {
+                    if (result.Code !== 200)
+                        reject(result)
+                    else
                         resolve(result);
-                    });
-                }
-                catch (ex) {
-                    reject(ex);
-                }
+                });
+
             });
 
         };
 
         this.getBatchFontface = function (jsonObj, apiKey, url) {
             return new Promise(function (resolve, reject) {
-                try {
-                    youzikuConfig.CoreModule.getBatchFontFace(apiKey, jsonObj, url, function (result) {
+
+                youzikuConfig.CoreModule.getBatchFontFace(apiKey, jsonObj, url, function (result) {
+                    if (result.Code !== 200)
+                        reject(result)
+                    else
                         resolve(result);
-                    });
-                }
-                catch (ex) {
-                    reject(ex);
-                }
+
+                });
+
             });
         }
         /**
@@ -126,14 +127,15 @@ function youzikuClient(apiKey, host) {
                */
         this.getCustomPathBatchFontface = function (jsonObj, apikey, url) {
             return new Promise(function (resolve, reject) {
-                try {
-                    youzikuConfig.CoreModule.getCustomPathBatchFontface(apiKey, jsonObj, url, function (result) {
+
+                youzikuConfig.CoreModule.getCustomPathBatchFontface(apiKey, jsonObj, url, function (result) {
+
+                    if (result.Code !== 200)
+                        reject(result)
+                    else
                         resolve(result);
-                    });
-                }
-                catch (ex) {
-                    reject(ex);
-                }
+                });
+
             });
         }
     }
